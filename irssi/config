@@ -1,0 +1,243 @@
+servers = (
+  {
+    address = "chat.freenode.net";
+    chatnet = "freenode";
+    port = "7000";
+    autoconnect = "yes";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    ssl_capath = "/etc/ssl/certs";
+  },
+  { address = "irc.ubuntu.com"; chatnet = "Ubuntu"; port = "8001"; }
+);
+
+chatnets = {
+  Ubuntu = { type = "IRC"; };
+  freenode = { type = "IRC"; };
+};
+
+channels = (
+  { name = "#sliit"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#thinkcube"; chatnet = "ircnet"; autojoin = "Yes"; }
+);
+
+aliases = {
+  J = "join";
+  WJOIN = "join -window";
+  WQUERY = "query -window";
+  LEAVE = "part";
+  Q = "quit";
+  BYE = "quit";
+  EXIT = "quit";
+  SIGNOFF = "quit";
+  DESCRIBE = "action";
+  DATE = "time";
+  HOST = "userhost";
+  LAST = "lastlog";
+  SAY = "msg *";
+  WI = "whois";
+  WII = "whois $0 $0";
+  WW = "whowas";
+  W = "who";
+  N = "names";
+  M = "msg";
+  T = "topic";
+  C = "clear";
+  CL = "clear";
+  K = "kick";
+  KB = "kickban";
+  KN = "knockout";
+  BANS = "ban";
+  B = "ban";
+  MUB = "unban *";
+  UB = "unban";
+  IG = "ignore";
+  UNIG = "unignore";
+  SB = "scrollback";
+  UMODE = "mode $N";
+  WC = "window close";
+  WN = "window new hide";
+  SV = "say Irssi $J ($V) - http://irssi.org/";
+  GOTO = "sb goto";
+  CHAT = "dcc chat";
+  RUN = "SCRIPT LOAD";
+  CALC = "exec - if which bc &>/dev/null\\; then echo '$*' | bc | awk '{print \"$*=\"$$1}'\\; else echo bc was not found\\; fi";
+  SBAR = "STATUSBAR";
+  INVITELIST = "mode $C +I";
+  "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
+  EXEMPTLIST = "mode $C +e";
+  ATAG = "WINDOW SERVER";
+  rcon = "reconnect";
+  look = "msg alis list $0";
+  wx = "who $0-;whois $0-";
+  i = "msg nickserv info $0";
+  ns = "msg NickServ $0 $1 $2";
+  cs = "msg chanserv";
+  base = "cd /home/chanux/.irssi/base";
+  note = "msg memoserv send";
+  ms = "msg memoserv";
+};
+
+statusbar = {
+  # formats:
+  # when using {templates}, the template is shown only if it's argument isn't
+  # empty unless no argument is given. for example {sb} is printed always,
+  # but {sb $T} is printed only if $T isn't empty.
+
+  items = {
+    # start/end text in statusbars
+    barstart = "{sbstart}";
+    barend = "{sbend}";
+
+    topicbarstart = "{topicsbstart}";
+    topicbarend = "{topicsbend}";
+
+    # treated "normally", you could change the time/user name to whatever
+    time = "{sb $Z}";
+    user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
+
+    # treated specially .. window is printed with non-empty windows,
+    # window_empty is printed with empty windows
+    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
+    window_empty = "{sb $winref{sbservertag $tag}}";
+    prompt = "{prompt $[.15]itemname}";
+    prompt_empty = "{prompt $winname}";
+    topic = " $topic";
+    topic_empty = " Irssi v$J - http://www.irssi.org";
+
+    # all of these treated specially, they're only displayed when needed
+    lag = "{sb Lag: $0-}";
+    act = "{sb Act: $0-}";
+    more = "-- more --";
+  };
+
+  # there's two type of statusbars. root statusbars are either at the top
+  # of the screen or at the bottom of the screen. window statusbars are at
+  # the top/bottom of each split window in screen.
+  default = {
+    # the "default statusbar" to be displayed at the bottom of the window.
+    # contains all the normal items.
+    window = {
+      disabled = "no";
+
+      # window, root
+      type = "window";
+      # top, bottom
+      placement = "bottom";
+      # number
+      position = "1";
+      # active, inactive, always
+      visible = "active";
+
+      # list of items in statusbar in the display order
+      items = {
+        barstart = { priority = "100"; };
+        time = { };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        act = { priority = "10"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+        window_switcher = { };
+      };
+    };
+
+    # statusbar to use in inactive split windows
+    window_inact = {
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "inactive";
+      items = {
+        barstart = { priority = "100"; };
+        window = { };
+        window_empty = { };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+
+    # we treat input line as yet another statusbar :) It's possible to
+    # add other items before or after the input line item.
+    prompt = {
+      type = "root";
+      placement = "bottom";
+      # we want to be at the bottom always
+      position = "100";
+      visible = "always";
+      items = {
+        prompt = { priority = "-1"; };
+        prompt_empty = { priority = "-1"; };
+        # treated specially, this is the real input line.
+        input = { priority = "10"; };
+      };
+    };
+
+    # topicbar
+    topic = {
+      type = "root";
+      placement = "top";
+      position = "1";
+      visible = "always";
+      items = {
+        topicbarstart = { priority = "100"; };
+        topic = { };
+        topic_empty = { };
+        topicbarend = { priority = "100"; alignment = "right"; };
+      };
+    };
+  };
+};
+settings = {
+  core = { real_name = "chanux"; user_name = "chanux"; nick = "chanux"; };
+  "fe-text" = { actlist_sort = "refnum"; };
+  "fe-common/core" = { completion_char = ","; };
+  "perl/core/scripts" = { nicklist_width = "20"; nicklist_height = "50"; };
+};
+keyboard = (
+  ##Define fuction keys to be simply Fn.
+  { key = "meta2-P"; id = "key"; data = "F1"; },
+  { key = "meta2-Q"; id = "key"; data = "F2"; },
+  { key = "meta2-R"; id = "key"; data = "F3"; },
+  { key = "meta2-S"; id = "key"; data = "F4"; },
+  { key = "meta2-15~"; id = "key"; data = "F5"; },
+  { key = "meta2-17~"; id = "key"; data = "F6"; },
+  { key = "meta2-18~"; id = "key"; data = "F7"; },
+  { key = "meta2-19~"; id = "key"; data = "F8"; },
+  { key = "meta2-20~"; id = "key"; data = "F9"; },
+  { key = "meta2-21~"; id = "key"; data = "F10"; },
+  { key = "meta2-24~"; id = "key"; data = "F12"; },
+  { key = "meta2-23~"; id = "key"; data = "F11"; },
+  { key = "meta2-2P"; id = "key"; data = "sF1"; },
+  { key = "meta2-2Q"; id = "key"; data = "sF2"; },
+  { key = "meta2-2R"; id = "key"; data = "sF3"; },
+  { key = "meta2-2S"; id = "key"; data = "sF4"; },
+  { key = "meta2-15;2~"; id = "key"; data = "sF5"; },
+  { key = "meta2-17;2~"; id = "key"; data = "sF6"; },
+  { key = "meta2-18;2~"; id = "key"; data = "sF7"; },
+  { key = "meta2-19;2~"; id = "key"; data = "sF8"; },
+  { key = "meta2-20;2~"; id = "key"; data = "sF9"; },
+  { key = "meta2-21;2~"; id = "key"; data = "sF10"; },
+  { key = "meta2-24;2~"; id = "key"; data = "sF12"; },
+  { key = "meta2-23;2~"; id = "key"; data = "sF11"; },
+
+  { key = "F1"; id = "change_window"; data = "1"; },
+  { key = "F2"; id = "change_window"; data = "2"; },
+  { key = "F3"; id = "change_window"; data = "3"; },
+  { key = "F4"; id = "change_window"; data = "4"; },
+  { key = "F5"; id = "change_window"; data = "5"; },
+  { key = "F6"; id = "change_window"; data = "6"; },
+  { key = "F7"; id = "change_window"; data = "7"; },
+  { key = "F8"; id = "change_window"; data = "8"; },
+  { key = "F9"; id = "change_window"; data = "9"; },
+  { key = "F10"; id = "change_window"; data = "10"; },
+  { key = "sF2"; id = "change_window"; data = "2"; },
+  { key = "^Q"; id = "command"; data = "window close"; },
+  { key = "^L"; id = "command"; data = "CLEAR "; },
+  { key = "^R"; id = "command"; data = "history_search "; },
+  { key = "^C"; id = "erase_line"; data = ""; },
+
+  { key = "^G"; id = "multi"; data = "erase_line;insert_text /ws "; }
+);

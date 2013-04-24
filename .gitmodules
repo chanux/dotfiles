@@ -4,3 +4,6 @@
 [submodule "toolbelt/t"]
 	path = toolbelt/t
 	url = https://github.com/sjl/t.git
+[submodule "vim/bundle/vundle"]
+	path = vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git

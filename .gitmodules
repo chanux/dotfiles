@@ -1,0 +1,6 @@
+[submodule "toolbelt/z"]
+	path = toolbelt/z
+	url = https://github.com/rupa/z
+[submodule "toolbelt/t"]
+	path = toolbelt/t
+	url = https://github.com/sjl/t.git

@@ -1,0 +1,19 @@
+#get 256 color on terminnal (for vim color scheme)
+export TERM=xterm-256color
+
+# For mc
+EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/vim
+
+#Cleaner history
+HISTCONTROL=ignoredups:ignorespace
+
+#export JAVA_HOME="/usr/lib/jvm/java-6-sun-1.6.0.24"
+
+#export PATH=${PATH}:/home/chanux/android/android-sdk-linux_86/tools
+#export PATH=${PATH}:/home/chanux/android/eclipse
+#export ANT_HOME=/usr/share/ant
+
+export PATH=${PATH}:/var/lib/gems/1.8/bin
+export PATH=${PATH}:/home/chanux/node_modules/.bin
+export PATH=${PATH}:$HOME/.rvm/bin # Add RVM to PATH for scripting

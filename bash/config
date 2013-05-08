@@ -8,12 +8,8 @@ export EDITOR=/usr/bin/vim
 #Cleaner history
 HISTCONTROL=ignoredups:ignorespace
 
-#export JAVA_HOME="/usr/lib/jvm/java-6-sun-1.6.0.24"
-
-#export PATH=${PATH}:/home/chanux/android/android-sdk-linux_86/tools
-#export PATH=${PATH}:/home/chanux/android/eclipse
-#export ANT_HOME=/usr/share/ant
-
-export PATH=${PATH}:/var/lib/gems/1.8/bin
-export PATH=${PATH}:/home/chanux/node_modules/.bin
-export PATH=${PATH}:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# Readline optimizations (http://redd.it/kbeoe)
+bind 'set completion-ignore-case on'
+bind 'set completion-prefix-display-length 2'
+bind 'Control-j: menu-complete'
+bind 'Control-k: menu-complete-backward'

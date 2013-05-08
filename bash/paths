@@ -1,0 +1,14 @@
+#export JAVA_HOME="/usr/lib/jvm/java-6-sun-1.6.0.24"
+
+#export PATH=${PATH}:$HOME/android/android-sdk-linux_86/tools
+#export PATH=${PATH}:$HOME/android/eclipse
+
+#export ANT_HOME=/usr/share/ant
+
+#export PATH=${PATH}:/var/lib/gems/1.8/bin
+#export PATH=${PATH}:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+#export PATH=${PATH}:$HOME/node_modules/.bin
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

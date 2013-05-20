@@ -40,7 +40,7 @@ AutoNext		= yes
 # %(X:TRUE:FALSE) - ternary expression - if X exists, do TRUE, otherwise
 #                   FALSE. '\' - escape character (must be double, because of 
 #                   config interpreter). man zshmisc for more info.
-FormatString		= "%(n:%n :)%(a:%a - :)%(t:%t:)%(A: \(%A\):)"
+FormatString		= "%(n:%n :)%(t:%t - :)%(a:%a:)%(A: \(%A\):)"
 
 # Output buffer size in kilobytes. Minimum value is 128KB. */
 OutputBuffer		= 2048

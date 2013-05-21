@@ -74,8 +74,13 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
 
-" Cleanup search dirt when you are done searching
-nnoremap <leader><space> :noh<cr>
+set pastetoggle=<F2>         " For when you want to paste loads of text
+
+" Toggle line numbers
+:nmap <C-N><C-N> :set invnumber<CR>
+
+" cleanup highlighted searches
+nmap <silent> ,/ :nohlsearch<CR>
 
 nnoremap <tab> %
 vnoremap <tab> %
@@ -94,7 +99,7 @@ set backup                       " enable backups
 set viminfo=%100,'100,/100,h,\"500,:100,n~/.viminfo
 " set viminfo='100,f1
 
-" FTDETECTAUTO COMANDS
+" FTDETECTAUTO commands
 autocmd BufRead,BufNewFile *.md set filetype=mkd " Recognize .md as markdown files (Vim default is .mkd)
 
 " Sudo to write

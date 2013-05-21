@@ -8,6 +8,11 @@ Bundle 'gmarik/vundle'
 
 " My bundles here
 Bundle 'airblade/vim-gitgutter'
+Bundle 'scrooloose/syntastic'
+Bundle 'ervandew/supertab'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'tpope/vim-surround'
 
 syntax on
 filetype plugin indent on
@@ -105,20 +110,13 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>w <C-w>v<C-w>l
 
 " syntatstic settings
-let g:syntastic_python_checker = 'pyflakes'
+let g:syntastic_python_checkers = ['flake8']
 
-" python-mode settings
+" ctrlp settings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
-" Switch pylint or pyflakes code checker
-" values (pylint, pyflakes)
-let g:pymode_lint_checker = "pyflakes"
-
-" Check code every save
-let g:pymode_lint_write = 1
-
-" Run linter on the fly
-let g:pymode_lint_onfly = 1
-
-" Auto open cwindow if errors be found
-let g:pymode_lint_cwindow = 1
-
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(pyc|so)$',
+  \ }

@@ -1,18 +1,4 @@
-filetype off	" required
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let vundle manage vundle
-" required
-Bundle 'gmarik/vundle'
-
-" My bundles here
-Bundle 'airblade/vim-gitgutter'
-Bundle 'scrooloose/syntastic'
-Bundle 'ervandew/supertab'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'tpope/vim-surround'
+source .vundle.vimrc
 
 syntax on
 filetype plugin indent on
@@ -113,15 +99,3 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Easily split window
 nnoremap <leader>w <C-w>v<C-w>l
-
-" syntatstic settings
-let g:syntastic_python_checkers = ['flake8']
-
-" ctrlp settings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(pyc|so)$',
-  \ }

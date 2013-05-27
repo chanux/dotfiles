@@ -1,4 +1,4 @@
-source .vundle.vimrc
+source $HOME/.vundle.vimrc    "Setting up Vundle
 
 syntax on
 filetype plugin indent on

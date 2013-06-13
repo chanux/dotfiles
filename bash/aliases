@@ -53,7 +53,9 @@ function za()
 alias clip='xsel -i --clipboard'
 
 # Adding z support
-. ~/.toolbelt/z/z.sh
+if [ "$PS1" ]; then
+    source $HOME/.toolbelt/z/z.sh
+fi
 
 # For t, the TODO app
 alias t='python ~/.toolbelt/t/t.py --task-dir ~/Dropbox/tasks --list tasks'

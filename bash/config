@@ -9,7 +9,9 @@ export EDITOR=/usr/bin/vim
 HISTCONTROL=ignoredups:ignorespace
 
 # Readline optimizations (http://redd.it/kbeoe)
-bind 'set completion-ignore-case on'
-bind 'set completion-prefix-display-length 2'
-bind 'Control-j: menu-complete'
-bind 'Control-k: menu-complete-backward'
+if [ "$PS1" ]; then
+    bind 'set completion-ignore-case on'
+    bind 'set completion-prefix-display-length 2'
+    bind 'Control-j: menu-complete'
+    bind 'Control-k: menu-complete-backward'
+fi

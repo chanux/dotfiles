@@ -99,3 +99,9 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Easily split window
 nnoremap <leader>w <C-w>v<C-w>l
+
+" Disabling arrow keys ^_^
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>

@@ -13,6 +13,7 @@ Bundle 'ervandew/supertab'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-surround'
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 
 " syntatstic settings
 let g:syntastic_python_checkers = ['flake8']

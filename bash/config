@@ -15,3 +15,12 @@ if [ "$PS1" ]; then
     bind 'Control-j: menu-complete'
     bind 'Control-k: menu-complete-backward'
 fi
+
+# virtualenvwrpapper
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
+
+# git aware prompt
+export PS1="\u@\h:\\w\$(__git_ps1 '(%s)')\$ "

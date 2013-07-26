@@ -1,6 +1,6 @@
 [user]
 	name = chanux
-	email = chanux@gmail.com
+	email = chanuka@thinkcube.com
 
 [alias]
   co = checkout
@@ -10,3 +10,6 @@
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
+
+[core]
+	excludesfile = /home/chanux/dotfiles/gitignore

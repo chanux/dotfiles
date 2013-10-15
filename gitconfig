@@ -13,3 +13,5 @@
 
 [core]
 	excludesfile = /home/chanux/dotfiles/gitignore
+[push]
+	default = simple

@@ -58,7 +58,7 @@ set diffopt=filler,iwhite     " ignore all whitespace and sync
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
+set colorcolumn=80
 
 set pastetoggle=<F2>         " For when you want to paste loads of text
 

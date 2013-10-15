@@ -13,12 +13,16 @@ servers = (
 
 chatnets = {
   Ubuntu = { type = "IRC"; };
-  freenode = { type = "IRC"; };
+  freenode = {
+      type = "IRC";
+      autosendcmd = "/msg nickserv identify chanux <passbird>;wait 2000";
+  };
 };
 
 channels = (
   { name = "#sliit"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#thinkcube"; chatnet = "ircnet"; autojoin = "Yes"; }
+  { name = "#thinkcube"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#docker"; chatnet = "freenode"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -240,4 +244,7 @@ keyboard = (
   { key = "^C"; id = "erase_line"; data = ""; },
 
   { key = "^G"; id = "multi"; data = "erase_line;insert_text /ws "; }
+);
+ignores = (
+  { level = "JOINS PARTS QUITS MODES"; channels = ( "#docker" ); }
 );

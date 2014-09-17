@@ -25,28 +25,26 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # za - Jump back in path https://gist.github.com/chanux/1119556
 function za()
 {
-    OLDIFS=$IFS
+    ZA_OLD_IFS=$IFS
     IFS=$(echo -en "\n\b")
-    dir=$PWD
-    mark=$1
 
-    [ "$mark" ] || dir=${dir%/*}
-    [ ${PWD##*/} != $USER ] || dir=$HOME
-
-    while [[ $mark =~ ^[0-9]*$ && $mark -gt 0 ]];do
-        if [ "${dir##*/}" = "$USER" ];then
-           dir=$HOME
-           break
-        fi  
-        dir=${dir%/*}
-        let mark-=1
-    done
-
-    if [ -d $dir ];then
-        cd $dir
+    if [ -z $1 ];then
+        za_mark=1
+    else
+        za_mark=$1
     fi
 
-    IFS=$OLDIFS
+    za_dir=$PWD
+
+    [ $za_dir == $HOME ] && return
+
+    while [[ $za_mark -gt 0 && $za_dir != $HOME ]];do
+        za_dir=${za_dir%/*}
+        let za_mark-=1
+    done
+
+    cd $za_dir
+    IFS=$ZA_OLD_IFS
 }
 
 #make xsel directly copy to clipboard
@@ -62,3 +60,5 @@ alias t='python ~/.toolbelt/t/t.py --task-dir ~/Dropbox/tasks --list tasks'
 
 # For t as the work bug tracker,
 alias bugs='python ~/.toolbelt/t/t.py --task-dir ~/Dropbox/work/bugs --list bugs'
+
+alias lst='tree -L 2'

@@ -1,27 +1,26 @@
 filetype off	" required
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
-" let vundle manage vundle
-" required
-Bundle 'gmarik/vundle'
+call plug#begin('~/.vim/plugged')
 
-" My bundles
-Bundle 'Raimondi/delimitMate'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'bling/vim-airline'
-Bundle 'ervandew/supertab'
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-surround'
+" My Plugs 
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/syntastic'
+Plug 'ervandew/supertab'
+Plug 'kien/ctrlp.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-surround'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdcommenter'
+Plug 'fatih/vim-go'
+
+call plug#end()
 
 " syntatstic settings
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+let g:syntastic_go_checkers = ['go']
 let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
 
 " ctrlp settings

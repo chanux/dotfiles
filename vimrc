@@ -1,4 +1,4 @@
-source $HOME/.vundle.vimrc    "Setting up Vundle
+source $HOME/.vimplug.vimrc    "Setting up vimplug
 
 syntax on
 filetype plugin indent on
@@ -36,8 +36,11 @@ set shell=/bin/sh
 set fileformats=unix
 set ff=unix
 set laststatus=2
-let mapleader=','
 colorscheme zenburn
+
+" Space is the leader. This is super convenient.
+let mapleader="\<Space>"
+nnoremap <SPACE> <Nop>
 
 " Tab settings
 set smarttab                  " tab and backspace are smart
@@ -119,3 +122,6 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+
+" Indent with tabs. Align with spaces
+autocmd FileType php setlocal autoindent noexpandtab shiftwidth=4 tabstop=4

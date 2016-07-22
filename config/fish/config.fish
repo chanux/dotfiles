@@ -1,28 +1,18 @@
 # Path to your oh-my-fish.
-set fish_path $HOME/.oh-my-fish
+set -g OMF_PATH $HOME/.local/share/omf
 
-# Theme
-set fish_theme numist 
+# Path to your oh-my-fish configuration.
+set -g OMF_CONFIG $HOME/.config/omf
 
-# 256 termcolors for vim colorschemes
-set -g TERM xterm-256color
+### Configuration required to load oh-my-fish ###
+# Note: Only add configurations that are required to be set before oh-my-fish is loaded.
+# For common configurations, we advise you to add them to your $OMF_CONFIG/init.fish file or
+# to create a custom plugin instead.
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
-# Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
-# Example format: set fish_plugins autojump bundler
-
-# Path to your custom folder (default path is $FISH/custom)
-#set fish_custom $HOME/dotfiles/oh-my-fish
-set fish_plugins python vi-mode za z
+set -g Z_SCRIPT_PATH $HOME/dotfiles/toolbelt/z/z.sh
 
 # Load oh-my-fish configuration.
-. $fish_path/oh-my-fish.fish
+source $OMF_PATH/init.fish
 
-# for virtualenv
-set -g VIRTUALFISH_COMPAT_ALIASES #virtualenvwrapper style commands
-. /home/chanux/.bin/virtualfish/virtual.fish
-
-setenv EDITOR vim
-
-# for vex
-set PATH /home/chanux/.local/bin $PATH
+# For virtualfish
+eval (python -m virtualfish)

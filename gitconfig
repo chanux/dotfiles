@@ -7,11 +7,14 @@
   ci = commit
   st = status
   br = branch
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  lg = log --all --color --graph --date=short --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(cyan)%ad%Creset %Cgreen(%cr)%C(bold blue)<%an>%Creset'
   type = cat-file -t
   dump = cat-file -p
 
 [core]
 	excludesfile = /home/chanux/dotfiles/gitignore
+    # requires diff-so-fancy
+    # npm install -g diff-so-fancy
+	pager = diff-so-fancy | less --tabs=1,5 -R
 [push]
 	default = simple

@@ -79,6 +79,9 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+" jk is Escape
+inoremap jk <ESC>
+
 "  backup
 set undodir=~/.vim/tmp/undo/     " undo files
 set backupdir=~/.vim/tmp/backup/ " backups
@@ -124,4 +127,7 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 
 " Indent with tabs. Align with spaces
+" PHP
 autocmd FileType php setlocal autoindent noexpandtab shiftwidth=4 tabstop=4
+" set json fieltype
+autocmd BufNewFile,BufRead *.json set ft=json

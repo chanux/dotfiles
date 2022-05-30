@@ -16,5 +16,10 @@
     # requires diff-so-fancy
     # npm install -g diff-so-fancy
 	pager = diff-so-fancy | less --tabs=1,5 -R
+	editor = vim
+
 [push]
 	default = simple
+
+[credential "https://source.developers.google.com"]
+    helper = gcloud.sh

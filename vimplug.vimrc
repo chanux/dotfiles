@@ -3,6 +3,7 @@ filetype off	" required
 call plug#begin('~/.vim/plugged')
 
 " My Plugs
+Plug 'jnurmine/Zenburn', { 'as': 'zenburn' }
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
@@ -19,6 +20,8 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
+Plug 'prettier/vim-prettier'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -53,3 +56,10 @@ let g:ale_lint_on_save = 1
 
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
+
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_on_text_changed = 'never'
+
+set number

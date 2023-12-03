@@ -129,5 +129,26 @@ nmap <leader>bl :ls<CR>
 " Indent with tabs. Align with spaces
 " PHP
 autocmd FileType php setlocal autoindent noexpandtab shiftwidth=4 tabstop=4
+
 " set json fieltype
 autocmd BufNewFile,BufRead *.json set ft=json
+
+" For YAML
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+set foldlevelstart=20
+
+" Black for Python fmt
+function! BlackFmt()
+    let save_pos = getpos(".")
+    %!black --quiet -
+    call setpos(".", save_pos)
+endfunction
+command! BlackFmt call BlackFmt()
+
+" Use jq formatting json
+function! JqFmt()
+    let save_pos = getpos(".")
+    %!jq
+    call setpos(".", save_pos)
+endfunction
+command! JqFmt call JqFmt()
